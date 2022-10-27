@@ -1,6 +1,7 @@
 // * Importando o metodo ROUTER do express
 import { Router } from "express";
 import { AuthenticateVerify } from "./middlewares/AuthenticateVerify";
+import { createCodController } from "./useCases/UserCase/CreateCod";
 // ! Codigos
 import { createUserController } from "./useCases/UserCase/CreateUser";
 import { getUserController } from "./useCases/UserCase/GetUser";
@@ -13,6 +14,11 @@ const router = Router(); // variavel com as rotas
 // ? Rota de Criação de usuario
 router.post('/api/v1/user', async (req, res) => {
   return await createUserController.handle(req, res)
+})
+
+// ? Rota de Criação de codigo
+router.post('/api/v1/user/createcod', AuthenticateVerify ,async (req, res) => {
+  return await createCodController.handle(req, res)
 })
 
 // ? Rota para buscar o usuario

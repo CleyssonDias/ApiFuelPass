@@ -11,6 +11,6 @@ model User {
   name      String
   email     String   @unique
   password  String
-  cods      String[]
+  cods      Json[]
   create_at DateTime @default(now())
 }

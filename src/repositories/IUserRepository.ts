@@ -19,4 +19,5 @@ export interface IUserRepository {
   generateToken(data: ITokenData): Promise<string>
   verifyPass(pass: string, passU:string): Promise<any>
   recoveyPass(email: string, pass: string): Promise<INewPass>
+  createCod(email: string,litros: number): Promise<any>
 }
