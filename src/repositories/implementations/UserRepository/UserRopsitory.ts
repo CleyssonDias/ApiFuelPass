@@ -1,7 +1,7 @@
 import { User } from "../../../entities/User";
 import { IUserRepository } from "../../IUserRepository";
 
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from '@prisma/client'
 import { hash, compare } from "bcrypt";
 import { sign } from "jsonwebtoken";
 
@@ -101,6 +101,7 @@ export class UserRopsitory implements IUserRepository {
   
     const cod = await crypto.randomBytes(4).toString('hex');
      user.cods.push({
+      id: user.cods.length + 1,
       litros,
       cod
     })
@@ -117,5 +118,49 @@ export class UserRopsitory implements IUserRepository {
     
   }
 
+  async DeleteCod(email:string, id: any): Promise<any> {
+    const user = await this.prisma.user.findUnique({
+      where: {
+        email,
+      },
+    })
+
+    var isok = false
+    user.cods.forEach((cod:any) => {
+      if (cod.id == id) {
+        isok = true
+        var indice = user.cods.indexOf(cod);
+
+        while(indice >= 0){
+
+          user.cods.splice(indice, 1);
+
+          indice = user.cods.indexOf(cod);
+
+        }
+      }
+    });
+
+    if (isok) {
+
+      const cods = await this.prisma.user.update({
+        where: { email },
+        data: { 
+           cods:user.cods
+        }
+       })
+       
+       return cods
+
+
+    } else {
+
+      return {"error":"Codigo não encontrado!"}
+    }
+
+
+
+
+  }
   
 }

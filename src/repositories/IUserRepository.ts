@@ -20,4 +20,5 @@ export interface IUserRepository {
   verifyPass(pass: string, passU:string): Promise<any>
   recoveyPass(email: string, pass: string): Promise<INewPass>
   createCod(email: string,litros: number): Promise<any>
+  DeleteCod(email:string ,id: any): Promise<any>
 }
