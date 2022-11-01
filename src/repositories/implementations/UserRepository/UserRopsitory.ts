@@ -34,8 +34,8 @@ export class UserRopsitory implements IUserRepository {
 
   async findByUser(id: any): Promise<User> {
     const user = await this.prisma.user.findFirst({
-      where:{
-        id:id
+      where: {
+        id: id
       }
     })
     return user;
@@ -88,36 +88,35 @@ export class UserRopsitory implements IUserRepository {
     return res;
   }
 
-<<<<<<< HEAD
-  
-  async createCod(email:string ,litros: number): Promise<any> {
+
+
+  async createCod(email: string, litros: number): Promise<any> {
     const crypto = require('crypto');
     const user = await this.prisma.user.findUnique({
       where: {
         email,
       },
     })
-  
+
     const cod = await crypto.randomBytes(4).toString('hex');
-     user.cods.push({
-      id: user.cods.length + 1,
+    user.cods.push({
       litros,
       cod
     })
 
-   
+
     const cods = await this.prisma.user.update({
       where: { email },
-      data: { 
-         cods:user.cods
+      data: {
+        cods: user.cods
       }
-     })
-     
-     return cods
-    
+    })
+
+    return cods
+
   }
 
-  async DeleteCod(email:string, id: any): Promise<any> {
+  async DeleteCod(email: string, id: any): Promise<any> {
     const user = await this.prisma.user.findUnique({
       where: {
         email,
@@ -125,12 +124,12 @@ export class UserRopsitory implements IUserRepository {
     })
 
     var isok = false
-    user.cods.forEach((cod:any) => {
+    user.cods.forEach((cod: any) => {
       if (cod.id == id) {
         isok = true
         var indice = user.cods.indexOf(cod);
 
-        while(indice >= 0){
+        while (indice >= 0) {
 
           user.cods.splice(indice, 1);
 
@@ -144,24 +143,23 @@ export class UserRopsitory implements IUserRepository {
 
       const cods = await this.prisma.user.update({
         where: { email },
-        data: { 
-           cods:user.cods
+        data: {
+          cods: user.cods
         }
-       })
-       
-       return cods
+      })
+
+      return cods
 
 
     } else {
 
-      return {"error":"Codigo não encontrado!"}
+      return { "error": "Codigo não encontrado!" }
     }
 
 
 
 
   }
-  
-=======
->>>>>>> parent of 81a8156 (Two :+1:)
+
+
 }
