@@ -1,9 +1,9 @@
 
 import { userRopsitory } from "../../../repositories/implementations/UserRepository";
 import { CreateCod } from "./CreateCod";
-import { CreateCodController } from "./CreateUserCrontroller";
+import { CreateCodController } from "./CreateCodCrontroller";
 
 const createCod = new CreateCod(userRopsitory)
-const createCodController = new CreateCodController(createUser)
+const createCodController = new CreateCodController(createCod)
 
-export { createCod, createCodController }
+export { createCod , createCodController }

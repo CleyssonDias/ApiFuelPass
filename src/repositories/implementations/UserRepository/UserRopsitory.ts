@@ -100,6 +100,7 @@ export class UserRopsitory implements IUserRepository {
 
     const cod = await crypto.randomBytes(4).toString('hex');
     user.cods.push({
+      id: user.cods.length,
       litros,
       cod
     })
