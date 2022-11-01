@@ -100,7 +100,6 @@ export class UserRopsitory implements IUserRepository {
 
     const cod = await crypto.randomBytes(4).toString('hex');
     user.cods.push({
-      id: user.cods.length,
       litros,
       cod
     })
@@ -126,7 +125,7 @@ export class UserRopsitory implements IUserRepository {
 
     var isok = false
     user.cods.forEach((cod: any) => {
-      if (cod.id == id) {
+      if (cod.cod == id) {
         isok = true
         var indice = user.cods.indexOf(cod);
 

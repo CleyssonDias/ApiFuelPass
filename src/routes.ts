@@ -19,12 +19,12 @@ router.post('/api/v1/user', async (req, res) => {
 
 
 // ? Rota de Criação de codigo
-router.post('/api/v1/user/cod',  async (req, res) => {
+router.post('/api/v1/user/cod', AuthenticateVerify, async (req, res) => {
   return await createCodController.handle(req, res)
 })
 
 // ? Rota de EXCLUIR codigo
-router.delete('/api/v1/user/cod',  async (req, res) => {
+router.delete('/api/v1/user/cod',   AuthenticateVerify, async (req, res) => {
   return await deleteCodController.handle(req, res)
 })
 
