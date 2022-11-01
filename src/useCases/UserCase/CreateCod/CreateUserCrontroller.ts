@@ -7,14 +7,13 @@ export class CreateCodController {
   ) {}
 
   async handle(req: Request, res: Response ) {
-    const { email, litros } = req.body
+    const { email } = req.body
   
     try {
-      if(!email || !litros) throw new Error("API is missing argument")
+      if(!email) throw new Error("API is missing argument")
       
-      const cod = await this.createCod.execute({email, litros})
 
-      return res.status(201).json({cod})
+      return res.status(201).json({})
     } catch (error) {
       return res.json({
         error: error.message || "Unexpected error."
@@ -22,4 +21,3 @@ export class CreateCodController {
     }
   }
 }
-

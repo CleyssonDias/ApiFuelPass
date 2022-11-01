@@ -17,8 +17,6 @@ type INewPass = {
 };
 
 export class UserRopsitory implements IUserRepository {
-
-
   private prisma: PrismaClient = new PrismaClient();
   private crypt: Function = hash;
   private gToken: Function = sign;
@@ -90,6 +88,7 @@ export class UserRopsitory implements IUserRepository {
     return res;
   }
 
+<<<<<<< HEAD
   
   async createCod(email:string ,litros: number): Promise<any> {
     const crypto = require('crypto');
@@ -163,4 +162,6 @@ export class UserRopsitory implements IUserRepository {
 
   }
   
+=======
+>>>>>>> parent of 81a8156 (Two :+1:)
 }

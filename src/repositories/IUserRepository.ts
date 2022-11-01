@@ -19,6 +19,9 @@ export interface IUserRepository {
   generateToken(data: ITokenData): Promise<string>
   verifyPass(pass: string, passU:string): Promise<any>
   recoveyPass(email: string, pass: string): Promise<INewPass>
+<<<<<<< HEAD
   createCod(email: string,litros: number): Promise<any>
   DeleteCod(email:string ,id: any): Promise<any>
+=======
+>>>>>>> parent of 81a8156 (Two :+1:)
 }

@@ -1,15 +1,15 @@
 import { User } from "../../../entities/User";
 import { IUserRepository } from "../../../repositories/IUserRepository";
-import { ICreateCodDTO } from "./ICreateCodDTO";
+import { ICreateUserDTO } from "./ICreateUserDTO";
 
 export class CreateCod {
   constructor(
     public userRepository: IUserRepository
   ) {}
 
-  async execute(data: ICreateCodDTO) {
-    const cods = await this.userRepository.createCod(data.email, data.litros)
+  async execute(data: ICreateUserDTO) {
     
-    return cods
+
+    return 
   }
 }
